@@ -1,21 +1,30 @@
 version: '3.8'
 
+# Defines two services: backend and frontend
 services:
   backend:
+    # Builds the backend service from the local Dockerfile
     build: ./backend
+    # Exposes the backend service on port 5000
     ports:
       - "5000:5000"
+    # Keeps backend data across container restarts
     volumes:
       - task-data:/app/data
 
   frontend:
+    # Builds the frontend service from the local Dockerfile
     build: ./frontend
+    # Exposes the frontend service on port 3000
     ports:
       - "3000:80"
+    # Ensures the backend service is loaded before the frontend service
     depends_on:
       - backend
+    # Sets environment variable for the backend API
     environment:
       - VITE_API_URL=http://localhost:5000
-  
+
+# Volume for persistent database data  
 volumes:
-task-data:
+  task-data:
