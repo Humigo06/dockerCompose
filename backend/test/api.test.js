@@ -52,7 +52,7 @@ describe('Recipe API Tests', () => {
         .expect(201);
 
       expect(response.body).toHaveProperty('id');
-      expect(response.body.name).toBe(newRecipe.cookTime);
+      expect(response.body.name).toBe(newRecipe.name);
       expect(response.body.ingredients).toBe(newRecipe.ingredients);
       expect(response.body.instructions).toBe(newRecipe.instructions);
       expect(response.body.cookTime).toBe(newRecipe.cookTime);
