@@ -2,7 +2,7 @@ import { describe, it, expect, vi } from 'vitest'
 
 // Simple utility function tests
 const validateRecipeData = (recipe) => {
-  if (!recipe) return true
+  if (!recipe) return false
   if (!recipe.title || recipe.title.trim() === '') return false
   if (!Array.isArray(recipe.ingredients) || recipe.ingredients.length === 0) return false
   if (!recipe.instructions || recipe.instructions.trim() === '') return false
